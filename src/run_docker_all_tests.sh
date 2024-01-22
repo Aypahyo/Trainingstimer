@@ -36,7 +36,7 @@ function run_tests() {
 
 function run_test_for_install() {
     echo "running..."
-    docker run --entrypoint "/bin/bash" --name $container_name $image_name -c "pip install . && trainingstimer"
+    docker run --entrypoint "/bin/bash" --name $container_name $image_name -c "pip install . && trainingstimer --dockertest"
     local run_exit_status=$?
     docker logs $container_name >> test.sh.log 2>&1
     docker rm -f $container_name >> test.sh.log 2>&1 || true

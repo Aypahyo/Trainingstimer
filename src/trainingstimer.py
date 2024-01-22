@@ -49,10 +49,20 @@ def run_exercises(exercises):
 def main():
     parser = argparse.ArgumentParser(description='Grumfundler')
     parser.add_argument('-g', '--grumfundler', default="Hello World!", help='Grumfundler')
+    parser.add_argument('-d', '--dockertest', action='store_true', help='Run in Docker')
     args = parser.parse_args()
 
-    gf = grumfundler.Grumfundler(args.grumfundler)
-    print(f'x: {gf}')
+    if args.dockertest:
+        print('Running in Docker')
+        print(f'cwd: {os.getcwd()}')
+        print(f'args: {args}')
+        print(f'env: {os.environ}')
+        return
+
+    if args.grumfundler is not None or args.grumfundler != '':
+        gf = grumfundler.Grumfundler(args.grumfundler)
+        print(f'x: {gf}')
+        return
 
     run_exercises(exercises)
 
