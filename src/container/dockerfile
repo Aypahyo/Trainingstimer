@@ -1,0 +1,7 @@
+FROM python:latest
+WORKDIR /app
+RUN python -m pip install --upgrade pip
+ADD requirements.txt /app
+RUN pip install -r requirements.txt
+ADD . /app
+ENTRYPOINT [ "./run_all_tests.sh" ]

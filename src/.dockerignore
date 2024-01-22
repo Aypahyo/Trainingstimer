@@ -1,0 +1,14 @@
+#Blacklist all
+*
+#Whitelist specifics
+!container
+!features
+!trainingstimer_core
+!tests
+!requirements.txt
+!run_all_tests.sh
+!setup.py
+!trainingstimer.py
+
+#Blacklist specifics
+**/__pycache__
